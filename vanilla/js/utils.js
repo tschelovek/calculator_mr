@@ -130,6 +130,7 @@ export function addManualCostEditor({priceOutput, onSubmit}) {
 
     function removeInput() {
         myInput.removeEventListener('keypress', handlerInputSubmit);
+        myBtn.removeEventListener('click', handlerSubmitBtn);
         window.removeEventListener('keydown', handlerEscape);
         window.removeEventListener('click', handlerOutClick);
         myInputWrapper.remove();
