@@ -1,4 +1,11 @@
 import Choices from "choices.js";
+import {
+    addInputNumberControls,
+    createFlyingOutput,
+    addManualCostEditor,
+    formatNumber,
+    cleanCostNumber
+} from "./js/utils.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     const groupFilm = document.querySelector('.calc-mr__group_film');
@@ -36,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const tripCost = parseInt(document.getElementById('vyezd_na_obekt').dataset?.price) || 0;
     const {output: flyingOutput} = createFlyingOutput({initValue: '0', postfix: '₽'})
+
+    addInputNumberControls(document.querySelectorAll('.calc-mr .counter__wrapper'));
 
     //* Хэндлеры для всех категорий, кроме "Выезды"
     groupsArr.forEach(group => {
@@ -87,7 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //* Хэндлер ручного редактирования цены
         group.querySelectorAll('.calc-mr__price-positions .span-price')
-            .forEach(output => addManualCostEditor(output));
+            .forEach(output => addManualCostEditor(
+                {
+                    priceOutput: output,
+                    onSubmit: calculatePriceGroupSum
+                }));
     })
 
     //* Хэндлеры категории "Выезды" (без "Ремонт вывески")
@@ -125,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
     }
+
     initRemontVyveskiHandlers();
 
     //* Хэндлеры опций света и проводки для отдельных букв
@@ -135,21 +149,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const rowDiv = checkboxLight.closest('.calc-mr__row');
 
         checkboxLight.addEventListener('change', () => {
-             if (rowCheckbox.checked) {
-                 handlerPriceRow({rowDiv, rowCheckbox})
-             }
-             if (checkboxLight.checked) {
-                 checkboxWiring.closest('.checkbox_wiring').classList.add('active')
-             } else {
-                 checkboxWiring.closest('.checkbox_wiring').classList.remove('active')
-             }
+            if (rowCheckbox.checked) {
+                handlerPriceRow({rowDiv, rowCheckbox})
+            }
+            if (checkboxLight.checked) {
+                checkboxWiring.closest('.checkbox_wiring').classList.add('active')
+            } else {
+                checkboxWiring.closest('.checkbox_wiring').classList.remove('active')
+            }
         })
         checkboxWiring.addEventListener('change', () => {
-             if (rowCheckbox.checked) {
-                 handlerPriceRow({rowDiv, rowCheckbox})
-             }
+            if (rowCheckbox.checked) {
+                handlerPriceRow({rowDiv, rowCheckbox})
+            }
         })
     }
+
     initSeparateLettersCheckboxes()
 
     //* Запускаем плагин кастомных селектов
@@ -319,156 +334,4 @@ document.addEventListener('DOMContentLoaded', () => {
         return element.dataset.price
     }
 
-    function cleanCostNumber(value) {
-        return Number(value.replace(/\s+/g, ''))
-    }
-
-    const formatter = new Intl.NumberFormat("ru-RU", {})
-
-    function formatNumber(value) {
-        return formatter.format(Number(value))
-    }
-
-    /**
-     *
-     * @param postfix строка, после output`а. Заполняется при инициализации
-     * @param initValue - начальное значение
-     * @returns {{output: HTMLSpanElement}} output - вывод информации
-     */
-    function createFlyingOutput({initValue = '', postfix = ''}) {
-        const windowDiv = document.createElement('div');
-        const outputSpan = document.createElement('span');
-        const postfixSpan = document.createElement('span');
-
-        windowDiv.classList.add('a3t__window');
-        outputSpan.classList.add('a3t__output');
-        postfixSpan.classList.add('a3t__postfix');
-
-        outputSpan.textContent = initValue;
-        postfixSpan.textContent = postfix;
-
-        windowDiv.append(outputSpan, postfixSpan)
-        document.body.append(windowDiv)
-
-        return {output: outputSpan}
-    }
-
-    /**
-     * Обработчик кнопок +/- у числовых инпутов в указанной обёртке
-     * @param wrappersArr - HTMLCollection элементов-обёрток (в д/случае .counter__wrapper)
-     */
-
-    addInputNumberControls(document.querySelectorAll('.calc-mr .counter__wrapper'));
-
-    function addInputNumberControls(wrappersArr) {
-        const event = new InputEvent("input", {
-            view: window,
-            bubbles: true,
-            cancelable: true,
-        });
-
-        wrappersArr.forEach(wrapper => {
-            const input = wrapper?.querySelector("input[type='number']");
-
-            wrapper?.querySelector('.counter__decrement').addEventListener('click', () => {
-                if (input.value > 0) input.stepDown(1);
-                input.dispatchEvent(event);
-            })
-
-            wrapper?.querySelector('.counter__increment').addEventListener('click', () => {
-                input.stepUp(1);
-                input.dispatchEvent(event);
-            })
-        })
-    }
-
-    /**
-     * Конец обработчика кнопок +/-
-     */
-
-    /**
-     *
-     * @param priceOutput DOM-элемент, содержимое которого будем редактировать
-     */
-    function addManualCostEditor(priceOutput) {
-        const targetWrapper = priceOutput.closest('.calc-mr__price-wrapper');
-        let myInput = undefined;
-        let myInputWrapper = undefined;
-        let myBtn = undefined;
-
-        priceOutput.addEventListener('click', handlerElementClick);
-
-        function handlerElementClick() {
-            if(!myInput) {
-                const {inputWrapper, input, btn} = createInputGroup();
-                myInputWrapper = inputWrapper;
-                myInput = input;
-                myBtn = btn;
-            }
-
-            myInput.value = cleanCostNumber(priceOutput.textContent);
-            targetWrapper.append(myInputWrapper);
-            myInput.focus();
-
-            myInput.addEventListener('keypress', handlerInputSubmit);
-            myBtn.addEventListener('click', handlerSubmitBtn)
-            window.addEventListener('keydown', handlerEscape);
-            setTimeout(() => {
-                    window.addEventListener('click', handlerOutClick)
-            },
-                200
-            )
-        }
-
-        function createInputGroup() {
-            const inputWrapper = document.createElement('div');
-            const input = document.createElement('input');
-            const btn = document.createElement('button');
-
-            inputWrapper.classList.add('a3t__editor');
-            input.classList.add('a3t__editor__input');
-            btn.classList.add('a3t__editor__btn');
-
-            input.setAttribute('type', 'number');
-            btn.setAttribute('type', 'button');
-
-            input.value = cleanCostNumber(priceOutput.textContent);
-            btn.textContent = 'OK';
-
-            inputWrapper.append(input, btn)
-
-            return {inputWrapper, input, btn}
-        }
-
-        function handlerInputSubmit(event) {
-            if (event.key === 'Enter') {
-                priceOutput.textContent = formatNumber(myInput.value);
-                removeInput();
-                calculatePriceGroupSum(priceOutput)
-            }
-        }
-
-        function handlerEscape(event) {
-            if (event.key === "Escape") removeInput();
-        }
-
-        function handlerOutClick(event) {
-            if (event.target !== myInput) removeInput();
-        }
-
-        function handlerSubmitBtn(event) {
-            event.preventDefault();
-
-            priceOutput.textContent = formatNumber(myInput.value);
-            removeInput();
-            calculatePriceGroupSum(priceOutput)
-        }
-
-        function removeInput() {
-            myInput.removeEventListener('keypress', handlerInputSubmit);
-            window.removeEventListener('keydown', handlerEscape);
-            window.removeEventListener('click', handlerOutClick);
-            myInputWrapper.remove();
-        }
-    }
 })
