@@ -1,0 +1,599 @@
+@import "./libs/base"
+@import "./libs/choices"
+
+$theme-color: #40BE65
+$button-border: #414549
+$bg_dark: #2B2F34
+$red: #FF2E59
+
+header.header
+  background-color: #2B2F34
+  background-image: unset
+  font-family: Circe, sans-serif
+  .top_menu
+    display: block
+    position: static
+    padding: 0
+    background: none
+  .top .phones a
+    color: #ffffff
+    font-size: 14px
+    font-weight: 350
+  .start_menu
+    position: relative
+    z-index: 100
+  .gray_header
+    background-image: unset
+
+.hero
+  margin-bottom: 160px
+  padding: 120px 0 168px
+  background-repeat: no-repeat
+  background-position: center
+  background-size: contain
+  .title_h1
+    max-width: 480px
+    font-size: 56px
+    font-family: Circe, sans-serif
+    font-weight: 800
+    line-height: 100%
+    text-transform: uppercase
+    position: relative
+    z-index: 30
+    &::first-line
+      color: $red
+
+.green
+  color: $theme-color
+
+.btn
+  &_green
+    padding: 16px 32px 12px
+    color: #FFF
+    text-align: center
+    font-size: 18px
+    line-height: 1
+    letter-spacing: 0.36px
+    text-transform: uppercase
+    background-color: $theme-color
+    -webkit-border-radius: 8px
+    -moz-border-radius: 8px
+    border-radius: 8px
+
+.counter__wrapper
+  &.sufx
+    &_sq-m
+      position: relative
+
+      input
+        min-width: 80px
+        padding-right: 40px
+        text-align: end
+
+      &::after
+        content: 'м.кв'
+        position: absolute
+        top: 9px
+        right: 32px
+        width: 34px
+        height: 20px
+
+    &_p-m
+      position: relative
+
+      input
+        min-width: 80px
+        padding-right: 36px
+        text-align: end
+
+      &::after
+        content: 'м.п'
+        position: absolute
+        top: 9px
+        right: 28px
+        width: 30px
+        height: 20px
+
+    &_block
+      position: relative
+
+      input
+        min-width: 96px
+        padding-right: 48px
+        text-align: end
+
+      &::after
+        content: 'блок.'
+        position: absolute
+        top: 9px
+        right: 36px
+        width: 36px
+        height: 20px
+
+    &_km
+      position: relative
+
+      input
+        min-width: 96px
+        padding-right: 36px
+        text-align: end
+
+      &::after
+        content: 'км'
+        position: absolute
+        top: 9px
+        right: 28px
+        width: 30px
+        height: 20px
+
+    &_hour
+      position: relative
+
+      input
+        padding-right: 20px
+        text-align: end
+
+      &::after
+        content: 'ч.'
+        position: absolute
+        top: 9px
+        right: 18px
+        width: 30px
+        height: 20px
+
+.calc-mr
+  background-color: $bg_dark
+  color: white
+  font-family: 'Circe', sans-serif
+
+  &__group
+    margin-bottom: 40px
+    padding: 30px
+    border: 1px solid #4E555E
+    -webkit-border-radius: 8px
+    -moz-border-radius: 8px
+    border-radius: 8px
+
+    &__header
+      margin-bottom: 40px
+      display: flex
+      gap: 16px
+      justify-content: space-between
+
+    &__footer
+      margin: 0 -30px
+      padding: 24px 30px 0 30px
+      border-top: 1px solid #4E555E
+      font-weight: 700
+      font-size: 20px
+      line-height: 20px
+      text-align: right
+      letter-spacing: -0.1px
+
+  &__row
+    margin-bottom: 32px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    gap: 16px
+
+    &__block
+      &_left
+        display: flex
+        align-items: center
+
+      &_right
+        display: flex
+        align-items: center
+        gap: 16px
+        &__checkboxes
+          min-width: 140px
+
+    .checkbox_big-round
+      margin-right: 24px
+
+  &__description
+    max-width: 600px
+    font-weight: 400
+    font-size: 20px
+    line-height: 28px
+
+  &__price-wrapper
+    position: relative
+    min-width: 100px
+    font-size: 16px
+    line-height: 20px
+    letter-spacing: -0.1px
+    text-align: right
+
+  &__total
+    display: flex
+    justify-content: space-between
+
+    &__sum
+      color: #FFF
+      font-size: 36px
+      font-weight: 700
+      line-height: 1.2
+      letter-spacing: -0.1px
+
+    #total_sum_mr
+      margin: 0 8px 0 20px
+
+  .span-price
+    margin-right: 4px
+
+  .select
+    &__wrapper
+      margin-left: 24px
+      min-width: 112px
+
+      &_smena
+        min-width: 160px
+
+  .calc-mr__group__header .select__wrapper
+    margin-left: unset
+    min-width: 140px
+  input
+    font-family: 'Circe', sans-serif
+    font-weight: 400
+    font-size: 16px
+
+    &[type="number"]
+      -moz-appearance: textfield
+
+      &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+        -webkit-appearance: none
+        margin: 0
+
+  .title_h2
+    color: $theme-color
+    font-size: 28px
+    font-weight: 700
+    line-height: 120%
+  &__group_letters-separated .select__wrapper
+    min-width: 200px
+
+.checkbox
+  &_big-round
+    .checkbox
+      &__toggle
+        display: block
+        position: relative
+        width: 65px
+        height: 40px
+        background-color: #4F5357
+        -moz-transition: background-color 0.4s ease 0s
+        -o-transition: background-color 0.4s ease 0s
+        -webkit-transition: background-color 0.4s ease 0s
+        transition: background-color 0.4s ease 0s
+        -webkit-border-radius: 20px
+        -moz-border-radius: 20px
+        border-radius: 20px
+        cursor: pointer
+
+        &__marker
+          display: block
+          position: absolute
+          top: 2px
+          left: 2px
+          right: auto
+          bottom: 2px
+          width: 36px
+          height: 36px
+          background-color: #ffffff
+          -webkit-border-radius: 50%
+          -moz-border-radius: 50%
+          border-radius: 50%
+          -moz-transition: left 0.4s ease 0s
+          -o-transition: left 0.4s ease 0s
+          -webkit-transition: left 0.4s ease 0s
+          transition: left 0.4s ease 0s
+
+    input[type=checkbox]
+      position: absolute
+      width: 1px
+      height: 1px
+      margin: -1px
+      border: 0
+      padding: 0
+      white-space: nowrap
+      clip-path: inset(100%)
+      clip: rect(0 0 0 0)
+      overflow: hidden
+
+      &:checked ~ label .checkbox__toggle
+        background-color: $theme-color
+
+        .checkbox__toggle__marker
+          left: calc(100% - 38px)
+  &_wiring
+    display: none
+    &.active
+      display: block
+  &_small-sq
+    input
+      position: absolute
+      opacity: 0
+      width: 1px
+      z-index: -1
+      &:checked + label::before
+        background: $theme-color url(../images/check.svg) center center no-repeat
+        background-size: 15px
+        display: block
+    label
+      display: flex
+      align-items: center
+      &::before
+        margin-right: 10px
+        content: ""
+        display: block
+        background-color: #4E555E
+        border: 2px solid rgba(155, 155, 155, 0.2)
+        border-radius: 8px
+        height: 26px
+        max-width: 26px
+        width: 100%
+
+.counter
+  &__wrapper
+    display: flex
+
+  &__btn
+    width: 30px
+    height: 40px
+    border: 2px solid $button-border
+    background-color: rgba(78, 85, 94, .2)
+    cursor: pointer
+    color: #9ea2a7
+
+  &__increment
+    border-left: none
+    border-radius: 0 20px 20px 0
+    padding-right: 10px
+
+  &__decrement
+    border-right: none
+    border-radius: 20px 0 0 20px
+    padding-left: 8px
+
+  &__input
+    margin: 0
+    width: 50px
+    font-size: 20px
+    font-family: Circe, sans-serif
+    color: #fff
+    line-height: 1
+    border: 2px solid rgba(155, 155, 155, .2)
+    border-left: none
+    border-right: none
+    display: inline-flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    -webkit-border-radius: 0
+    -moz-border-radius: 0
+    border-radius: 0
+    background-color: #2B2F34
+
+.choices
+  background-color: inherit
+  -webkit-border-radius: 20px
+  -moz-border-radius: 20px
+  border-radius: 20px
+
+  &__list--dropdown, &__list[aria-expanded]
+    background-color: $bg_dark
+    border: 2px solid $button-border
+    border-top: none
+    border-radius: 0 0 20px 20px
+    color: #9B9B9B
+
+  &__list--dropdown .choices__list, .choices__list[aria-expanded] .choices__list
+    max-height: 420px
+
+  &__list--dropdown .choices__item, .choices__list[aria-expanded] .choices__item
+    font-family: 'Circe', sans-serif
+    font-weight: 400
+    font-size: 16px
+
+  &__list--dropdown .choices__item--selectable.is-highlighted, .choices__list[aria-expanded] .choices__item--selectable.is-highlighted
+    color: white
+    background-color: $button-border
+    border: none
+
+  &__inner
+    padding: 6px 10px 4px
+    height: 42px
+    min-height: unset
+    border: 2px solid $button-border
+    background-color: inherit
+    text-align: center
+    font-family: 'Circe', sans-serif
+    font-weight: 400
+    font-size: 16px
+    line-height: 19px
+    -webkit-border-radius: 20px
+    -moz-border-radius: 20px
+    border-radius: 20px
+
+  &[data-type*=select-one]::after
+    content: url('../css/icons/arrow_sel.svg')
+    width: 12px
+    border: none
+
+  &[data-type*=select-one].is-open::after
+    margin-top: -12px
+
+.is-open .choices__inner
+  border-radius: 20px 20px 0 0
+
+.is-focused .choices__inner
+  border: 2px solid $button-border
+
+.is-open .choices__list--dropdown, .is-open .choices__list[aria-expanded]
+  border-color: $button-border
+  box-shadow: 0 6px 12px #111519
+
+.azt_tooltip
+  position: relative
+  margin-left: auto
+  .tooltip
+    &__popover
+      padding: 8px 12px
+      min-width: 136px
+      position: absolute
+      top: -12px
+      right: 0
+      opacity: 0
+      transition: transform 0.3s ease-in-out, opacity 0.3s
+      background-color: #4E555D
+      -webkit-border-radius: 8px
+      -moz-border-radius: 8px
+      border-radius: 8px
+      pointer-events: none
+
+      &__text
+        font-family: inherit
+        font-weight: 400
+        font-size: 16px
+        line-height: 20px
+        letter-spacing: -0.2px
+        text-align: center
+
+    &__icon
+      cursor: pointer
+
+  &:hover
+    .tooltip__popover
+      opacity: 1
+      transform: translateY(-100%)
+
+.a3t
+  &__window
+    padding: 8px 16px 4px
+    position: fixed
+    right: 100px
+    top: 50vh
+    color: #FFF
+    background-color: #4E555D
+    -webkit-border-radius: 8px
+    -moz-border-radius: 8px
+    border-radius: 8px
+    box-shadow: 0 0 8px 2px #111111
+    z-index: 100
+
+  &__output
+    font-size: 24px
+    font-family: Circe, sans-serif
+    font-weight: 700
+    line-height: 1
+    letter-spacing: -0.1px
+
+  &__postfix
+    margin-left: 4px
+    font-size: 20px
+    font-family: Circe, sans-serif
+    font-weight: 500
+
+  &__editor
+    position: absolute
+    bottom: -28px
+    right: 12px
+    &__input
+      max-width: 80px
+      text-align: right
+      background-color: #333
+      color: white
+    &__btn
+      margin-top: 4px
+      padding: 2px 16px
+      height: 22px
+      line-height: 1
+      cursor: pointer
+      background-color: #333
+      -webkit-border-radius: 4px
+      -moz-border-radius: 4px
+      border-radius: 4px
+
+
+
+@media (min-width: 640px)
+  .choices__list--dropdown .choices__item--selectable, .choices__list[aria-expanded] .choices__item--selectable
+    padding: 8px 12px
+
+@media (max-width: 1024px)
+  .hero
+    margin-bottom: 80px
+    padding: 100px 0 120px
+    position: relative
+    background-size: cover
+    background-position: center right 30%
+    &::after
+      content: ''
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      background-color: black
+      opacity: 0.3
+      z-index: 5
+    .title_h1
+      text-shadow: 0 0 20px white
+
+  .calc-mr
+    &__group_letters-separated .calc-mr__row:first-child .calc-mr__row__block_right
+      flex-flow: column
+
+@media (max-width: 768px)
+  .calc-mr
+    &__row
+      margin-bottom: 24px
+      padding-bottom: 24px
+      flex-flow: column
+      align-items: flex-start
+      border-bottom: 1px solid #32373D
+      &__block_right
+        width: 100%
+        flex-flow: wrap
+        .calc-mr__price-wrapper
+          margin-left: auto
+    &__description
+      font-size: 18px
+
+@media (max-width: 640px)
+  .hero
+    .title_h1
+      font-size: 40px
+  .calc-mr
+    &__row
+      flex-flow: column
+    &__total
+      flex-flow: column
+      gap: 16px
+    .title_h2
+      font-size: 22px
+
+
+@media (max-width: 480px)
+  .hero
+    .title_h1
+      font-size: 32px
+
+  .calc-mr
+    &__group
+      padding: 40px 8px
+      &__header
+        padding-bottom: 20px
+        flex-flow: wrap
+        border-bottom: 2px solid #32373D
+      &__footer
+        margin: 0px -8px
+    &__description
+      font-size: 16px
+    .title_h2
+      font-size: 22px
+      width: 100%
+      text-align: center
+

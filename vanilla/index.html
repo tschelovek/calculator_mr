@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Vite App</title>
+    <style>
+        body {
+            background-color: #2B2F34;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+<script type="module" src="./main.js"></script>
+<button type="button" id="test">Click me, pls</button>
+
+<div class="wrapper">
+
+    <div class="calc-mr">
+        <h1 class="title_h1">Калькулятор стоимости монтажных работ</h1>
+
+        <div class="calc-mr__group calc-mr__group_trip">
+            <div class="calc-mr__group__header"><h2 class="title_h2">Выезды</h2></div>
+
+            <div class="calc-mr__price-positions">
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="vyezd_na_obekt" data-price="2400">
+                            <label for="vyezd_na_obekt">
+                                <span class="checkbox__toggle">
+                                    <span class="checkbox__toggle__marker"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Выезд на объект (выезд + замеры, монтаж таблички или наклейки)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper counter_trip">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                                <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" name="face_light" id="vyezd_zabor_rk" data-price="2400">
+                            <label for="vyezd_zabor_rk">
+              <span class="checkbox__toggle">
+                <span class="checkbox__toggle__marker"></span>
+              </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Выезд + забор РК(габаритное) с&nbsp;производства и&nbsp;доставка на&nbsp;объект (из&nbsp;транспортной)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper counter_trip">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" name="face_light" id="vyezd_proizvobmerov" data-price="800" data-add-trip="true">
+                            <label for="vyezd_proizvobmerov">
+                                <span class="checkbox__toggle">
+                                    <span class="checkbox__toggle__marker"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Выезд + Произведение обмеров места установки РК + подбор крепления</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper counter_trip">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+<!-- TODO: add select-->
+                        <div class="select__wrapper">
+                            <select class="select__hours">
+                                <option value="0" selected>1 час</option>
+                                <option value="1">2 часа</option>
+                                <option value="2">3 часа</option>
+                                <option value="3">4 часа</option>
+                                <option value="4">5 часов</option>
+                                <option value="5">6 часов</option>
+                                <option value="6">7 часов</option>
+                                <option value="7">8 часов</option>
+                                <option value="8">9 часов</option>
+                                <option value="9">10 часов</option>
+                            </select>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" name="face_light" id="vyezd_diagnostika" data-price="800" data-add-trip="true">
+                            <label for="vyezd_diagnostika">
+              <span class="checkbox__toggle">
+                <span class="checkbox__toggle__marker"></span>
+              </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Выезд + Диагностика, экспертиза РК (без транспорта и спец. инструмента)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper counter_trip">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="select__wrapper">
+                            <select class="select__hours">
+                                <option value="0" selected>1 час</option>
+                                <option value="1">2 часа</option>
+                                <option value="2">3 часа</option>
+                                <option value="3">4 часа</option>
+                                <option value="4">5 часов</option>
+                                <option value="5">6 часов</option>
+                                <option value="6">7 часов</option>
+                                <option value="7">8 часов</option>
+                                <option value="8">9 часов</option>
+                                <option value="9">10 часов</option>
+                            </select>
+                        </div>
+
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="remont_vyveski" data-price="800" data-add-trip="true">
+                            <label for="remont_vyveski">
+              <span class="checkbox__toggle">
+                <span class="checkbox__toggle__marker"></span>
+              </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Ремонт вывески (на объекте)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="select__wrapper">
+                            <select class="select__hours">
+                                <option value="1" selected>1 час</option>
+                                <option value="2">2 часа</option>
+                                <option value="3">3 часа</option>
+                                <option value="4">4 часа</option>
+                                <option value="5">5 часов</option>
+                                <option value="6">6 часов</option>
+                                <option value="7">7 часов</option>
+                                <option value="8">8 часов</option>
+                                <option value="9">9 часов</option>
+                                <option value="10">10 часов</option>
+                            </select>
+                        </div>
+
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="calc-mr__group__footer">
+                <span class="span-price">0</span>₽
+            </div>
+        </div>
+
+        <div class="calc-mr__group calc-mr__group_film">
+            <div class="calc-mr__group__header"><h2 class="title_h2">Плёнка</h2></div>
+
+            <div class="calc-mr__price-positions">
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="montazh_plenki"
+                                    data-price="240"
+                                    data-price-max="480"
+                            >
+                            <label for="montazh_plenki">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж плёнки</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+<!--                        TODO: add suffix class-->
+                        <div class="counter__wrapper sufx_sq-m">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="demontazh_plenki"
+                                    data-price="320"
+                                    data-price-max="800"
+                            >
+                            <label for="demontazh_plenki">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж плёнки</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_sq-m">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="demontazh_plenki_once"
+                                    data-price="560"
+                                    data-price-max="1280"
+                            >
+                            <label for="demontazh_plenki_once">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж и монтаж плёнки за 1 выезд</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_sq-m">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-mr__group__footer">
+                <span class="span-price">0</span>₽
+            </div>
+        </div>
+
+        <div class="calc-mr__group calc-mr__group_banner">
+            <div class="calc-mr__group__header">
+                <h2 class="title_h2">Баннер</h2>
+                <div class="azt_tooltip">
+                    <div class="tooltip__popover">
+                        <div class="tooltip__popover__text">
+                            1 блок = 3 кв.м
+                        </div>
+                    </div>
+                    <div class="tooltip__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_3438_3140)">
+                                    <circle cx="12" cy="12" r="11" stroke="#9EA5A9" stroke-width="2"/>
+                                    <path d="M9 9.27273V9C9 7.34315 10.3714 6 12.0282 6V6C13.6542 6 15 7.3181 15 8.94406V8.94406C15 9.91756 14.5188 10.8281 13.7144 11.3765L13.2018 11.7261C12.4499 12.2387 12 13.0899 12 14V14" stroke="#9EA5A9" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M12 17L12 18" stroke="#9EA5A9" stroke-width="2" stroke-linecap="round"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_3438_3140">
+                                        <rect width="24" height="24" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                </div>
+            </div>
+
+            <div class="calc-mr__price-positions">
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="m" data-price="400" data-add-trip="true">
+                            <label for="m">
+                <span class="checkbox__toggle">
+                    <span class="checkbox__toggle__marker"></span>
+                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж баннера на существующий МК</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_block">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="montazh_bannera_mk" data-price="800">
+                            <label for="montazh_bannera_mk">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж баннера с МК</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_block">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="montazh_bannera_vmeste" data-price="400">
+                            <label for="montazh_bannera_vmeste">
+                <span class="checkbox__toggle">
+                    <span class="checkbox__toggle__marker"></span>
+                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж баннера вместе с МК (если в сборе с производства)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_block">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="demontazh_only_bannera" data-price="240">
+                            <label for="demontazh_only_bannera">
+                <span class="checkbox__toggle">
+                    <span class="checkbox__toggle__marker"></span>
+                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж только баннера (со стены или с МК)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_block">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="de_montazh_bannera_1_vyezd" data-price="640">
+                            <label for="de_montazh_bannera_1_vyezd">
+                <span class="checkbox__toggle">
+                    <span class="checkbox__toggle__marker"></span>
+                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж и монтаж баннера за один выезд</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_block">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="calc-mr__group__footer">
+                <span class="span-price">0</span>₽
+            </div>
+        </div>
+
+        <div class="calc-mr__group calc-mr__group_corob">
+            <div class="calc-mr__group__header">
+                <h2 class="title_h2">Световой короб</h2>
+                <div class="select__wrapper">
+                    <select class="select_lift select__coefficient">
+                        <option value="1" selected>Без вышки</option>
+                        <option value="1.8">С вышкой</option>
+                        <option value="2.5">С лесов</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="calc-mr__price-positions">
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="montazh_svet_koroba" data-price="400" data-coefficient="true">
+                            <label for="montazh_svet_koroba">
+                                <span class="checkbox__toggle">
+                                    <span class="checkbox__toggle__marker"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж светового короба</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_block">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="zamena_licevoj_sk" data-price="800" data-coefficient="true">
+                            <label for="zamena_licevoj_sk">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Замена лицевой части СК</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_block">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="demontazh_skutilizaciya" data-price="400" data-coefficient="true">
+                            <label for="demontazh_skutilizaciya">
+                <span class="checkbox__toggle">
+                    <span class="checkbox__toggle__marker"></span>
+                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж СК + утилизация</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_block">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="calc-mr__group__footer">
+                <span class="span-price">0</span>₽
+            </div>
+        </div>
+
+        <div class="calc-mr__group calc-mr__group_light-letters">
+            <div class="calc-mr__group__header">
+                <h2 class="title_h2">Буквы световые и несветовые на раме или подложке</h2>
+                <div class="select__wrapper">
+                    <select class="select_lift select__coefficient">
+                        <option value="1" selected>Без вышки</option>
+                        <option value="1.8">С вышкой</option>
+                        <option value="2.5">С лесов</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="calc-mr__price-positions">
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="montazh_bukv_na_rame" data-price="400" data-coefficient="true">
+                            <label for="montazh_bukv_na_rame">
+                                <span class="checkbox__toggle">
+                                    <span class="checkbox__toggle__marker"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж световых букв на раме или подложке</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_block">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="demontazh_bukv_na_rame" data-price="800" data-coefficient="true">
+                            <label for="demontazh_bukv_na_rame">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_block">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="calc-mr__group__footer">
+                <span class="span-price">0</span>₽
+            </div>
+        </div>
+
+
+        <div class="calc-mr__group calc-mr__group_letters-separated">
+            <div class="calc-mr__group__header">
+                <h2 class="title_h2">Буквы световые по отдельности на дист. Держателях или вплотную к стене</h2>
+            </div>
+
+            <div class="calc-mr__price-positions">
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="montazh_svet_let"
+                                    data-separated-letters="true"
+                                    data-nonlight_a="260"
+                                    data-nonlight_b="320"
+                                    data-nonlight_c="480"
+                                    data-light-open_a="480"
+                                    data-light-open_a-max="480"
+                                    data-light-open_b="320"
+                                    data-light-open_b-max="320"
+                                    data-light-open_c="720"
+                                    data-light-open_c-max="1600"
+                                    data-light-hidden_a="480"
+                                    data-light-hidden_a-max="960"
+                                    data-light-hidden_b="480"
+                                    data-light-hidden_b-max="960"
+                                    data-light-hidden_c="960"
+                                    data-light-hidden_c-max="1600"
+                                    data-add-trip="true"
+                            >
+                            <label for="montazh_svet_let">
+                                <span class="checkbox__toggle">
+                                    <span class="checkbox__toggle__marker"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж световых букв без рамы или подложки за штуку</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="calc-mr__row__block_right__checkboxes">
+                            <div class="checkbox_small-sq checkbox_light">
+                                <input type="checkbox" id="checkbox_light_letter" >
+                                <label for="checkbox_light_letter">
+                                    Световые
+                                </label>
+                            </div>
+                            <div class="checkbox_small-sq checkbox_wiring">
+                                <input type="checkbox" id="checkbox_hidden-wiring" >
+                                <label for="checkbox_hidden-wiring">
+                                    Скрытая проводка
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="select__wrapper">
+                            <select class="select_base">
+                                <option value="a" selected>на стену "ГКЛ"</option>
+                                <option value="b">на стену "Кирпич",на стену "Бетон"</option>
+                                <option value="c">на стену "Гранитный камень / Мрамор"</option>
+                            </select>
+                        </div>
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="demontazh_svet_let" data-price="800">
+                            <label for="demontazh_svet_let">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_sq-m">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="utiliz_svet_let" data-price="800">
+                            <label for="utiliz_svet_let">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Утилизация</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="calc-mr__group__footer">
+                <span class="span-price">0</span>₽
+            </div>
+        </div>
+
+
+        <div class="calc-mr__group calc-mr__group_neon">
+            <div class="calc-mr__group__header">
+                <h2 class="title_h2">Неоновые вывески</h2>
+            </div>
+
+            <div class="calc-mr__price-positions">
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox"
+                                   id="montazh_neoneski_s_podl"
+                                   data-price="1"
+                                   data-add-trip="true"
+                            >
+                            <label for="montazh_neoneski_s_podl">
+                                <span class="checkbox__toggle">
+                                    <span class="checkbox__toggle__marker"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж неоновой вывески с подложкой</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox"
+                                   id="montazh_neon_bezpod"
+                                   data-price="1"
+                                   data-add-trip="true"
+                            >
+                            <label for="montazh_neon_bezpod">
+                                <span class="checkbox__toggle">
+                                    <span class="checkbox__toggle__marker"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж без подложки (каждый элемент отдельно)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox"
+                                   id="demontazh_nv_podl"
+                                   data-price="68"
+                                   data-add-trip="true"
+                            >
+                            <label for="demontazh_nv_podl">
+                                <span class="checkbox__toggle">
+                                    <span class="checkbox__toggle__marker"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж неоновой вывески с подложкой</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="utiliz_nv_s_podlozhkoj" data-price="800">
+                            <label for="utiliz_nv_s_podlozhkoj">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Утилизация неоновой вывески с подложкой</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox"
+                                   id="remont_neon"
+                                   data-price="800"
+                                   data-extra-expense="666"
+                                   remont_neonofis="true"
+                            >
+                            <label for="remont_neon">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Ремонт неоновой вывески</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_hour">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="calc-mr__group__footer">
+                <span class="span-price">0</span>₽
+            </div>
+        </div>
+
+        <div class="calc-mr__group calc-mr__group_nesvet-signboard">
+            <div class="calc-mr__group__header">
+                <h2 class="title_h2">Несветовые вывески (композит, ПВХ, панно)</h2>
+            </div>
+
+            <div class="calc-mr__price-positions">
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="montazh_nesvet_vyveski" data-price="1">
+                            <label for="montazh_nesvet_vyveski">
+                                <span class="checkbox__toggle">
+                                    <span class="checkbox__toggle__marker"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж несветовой вывески</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="select__wrapper">
+                            <select class="select__price">
+                                <option value="800" selected>Вплотную к стене</option>
+                                <option value="1200">На дистанционных держателях</option>
+                            </select>
+                        </div>
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="demontazh_nesvet_vyveski" data-price="800">
+                            <label for="demontazh_nesvet_vyveski">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_block">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="utilizaciya_vyvesko" data-price="800">
+                            <label for="utilizaciya_vyvesko">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Утилизация</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_block">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="calc-mr__group__footer">
+                <span class="span-price">0</span>₽
+            </div>
+        </div>
+
+        <div class="calc-mr__group calc-mr__group_svet-panel">
+            <div class="calc-mr__group__header">
+                <h2 class="title_h2">Световые панели (акрилайт, фреймлайт, магнетик)</h2>
+<!--                <div class="select__wrapper">-->
+<!--                    <select class="select_lift select__coefficient">-->
+<!--                        <option value="1" selected>Вплотную к стене</option>-->
+<!--                        <option value="1.8">На дистанционных держателях</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+            </div>
+
+            <div class="calc-mr__price-positions">
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="montazh_svet_panel"
+                                    data-price="320"
+                                    data-price-firstmontazh_svet_next="0"
+                                    data-add-trip="true"
+                            >
+                            <label for="montazh_svet_panel">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж таблички (двусторонний скотч)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox"
+                                   id="demontazh_svet_paneli"
+                                   data-price="800"
+                                   data-add-trip="true"
+                            >
+                            <label for="demontazh_svet_paneli">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox"
+                                   id="utilizaciya_svetpanel"
+                                   data-price="800"
+                            >
+                            <label for="utilizaciya_svetpanel">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="calc-mr__group__footer">
+                <span class="span-price">0</span>₽
+            </div>
+        </div>
+
+        <div class="calc-mr__group calc-mr__group_tables">
+            <div class="calc-mr__group__header">
+                <h2 class="title_h2">Таблички и др.</h2>
+                <div class="azt_tooltip">
+                    <div class="tooltip__popover">
+                        <div class="tooltip__popover__text">
+                            Стоимость (де)монтажа первой таблички входит в стоимость выезда. Демонтаж не гарантирует сохранности поверхности
+                        </div>
+                    </div>
+                    <div class="tooltip__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_3438_3140)">
+                                <circle cx="12" cy="12" r="11" stroke="#9EA5A9" stroke-width="2"/>
+                                <path d="M9 9.27273V9C9 7.34315 10.3714 6 12.0282 6V6C13.6542 6 15 7.3181 15 8.94406V8.94406C15 9.91756 14.5188 10.8281 13.7144 11.3765L13.2018 11.7261C12.4499 12.2387 12 13.0899 12 14V14" stroke="#9EA5A9" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M12 17L12 18" stroke="#9EA5A9" stroke-width="2" stroke-linecap="round"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_3438_3140">
+                                    <rect width="24" height="24" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-mr__price-positions">
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="montazh_tablichki_skotch"
+                                    data-price="320"
+                                    data-price-first="0"
+                                    data-add-trip="true"
+                            >
+                            <label for="montazh_tablichki_skotch">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж таблички (двусторонний скотч)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="montazh_tablichki_samorezy"
+                                    data-price="320"
+                                    data-price-first="0"
+                                    data-add-trip="true"
+                            >
+                            <label for="montazh_tablichki_samorezy">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Монтаж таблички (саморезы, дистанционники)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="stendy_next"
+                                    data-price="320"
+                                    data-price-first="400"
+                                    data-add-trip="true"
+                            >
+                            <label for="stendy_next">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Стенды</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="rezhimka"
+                                    data-price="320"
+                                    data-price-first="400"
+                                    data-add-trip="true"
+                            >
+                            <label for="rezhimka">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Режимка на дверь</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="de_tablichki_skotch"
+                                    data-price="320"
+                                    data-price-first="0"
+                                    data-add-trip="true"
+                            >
+                            <label for="de_tablichki_skotch">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж таблички (двусторонний скотч)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="demontazh_stendy_next"
+                                    data-price="320"
+                                    data-price-first="400"
+                                    data-add-trip="true"
+                            >
+                            <label for="demontazh_stendy_next">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж таблички (саморезы, дистанционники)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="demontazh_tablichki_samorezy"
+                                    data-price="320"
+                                    data-price-first="400"
+                                    data-add-trip="true"
+                            >
+                            <label for="demontazh_tablichki_samorezy">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж стенды</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="demontazh_rezhimka"
+                                    data-price="320"
+                                    data-price-first="0"
+                                    data-add-trip="true"
+                            >
+                            <label for="demontazh_rezhimka">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Демонтаж режимка на дверь (печать или аппликация)</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="utilizaciya_tablichki"
+                                    data-price="320"
+                                    data-add-trip="true"
+                            >
+                            <label for="utilizaciya_tablichki">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Утилизация</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="calc-mr__group__footer">
+                <span class="span-price">0</span>₽
+            </div>
+        </div>
+
+        <div class="calc-mr__group calc-mr__group_more">
+            <div class="calc-mr__group__header"><h2 class="title_h2">Дополнительные услуги</h2></div>
+
+            <div class="calc-mr__price-positions">
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="montage_blok_pitaniya"
+                                    data-price="240"
+                                    data-add-trip="true"
+                            >
+                            <label for="montage_blok_pitaniya">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Блок питания - замена</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="montage_koraspred"
+                                    data-price="320"
+                                    data-add-trip="true"
+                            >
+                            <label for="montage_koraspred">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Коробка распред. - установка</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="prokladka_el_provodki"
+                                    data-price="560"
+                                    data-add-trip="true"
+                            >
+                            <label for="prokladka_el_provodki">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Прокладка эл. проводки</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_p-m">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="prokladka_vodki_v_gofre"
+                                    data-price="560"
+                                    data-add-trip="true"
+                            >
+                            <label for="prokladka_vodki_v_gofre">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Прокладка эл. проводки в гофре</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_p-m">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input
+                                    type="checkbox"
+                                    id="Установка прожектора с подключением"
+                                    data-price="320"
+                                    data-price-first="820"
+                                    data-add-trip="true"
+                            >
+                            <label for="Установка прожектора с подключением">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Установка прожектора с подключением</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-mr__group__footer">
+                <span class="span-price">0</span>₽
+            </div>
+        </div>
+
+        <div class="calc-mr__group calc-mr__group_spectech">
+            <div class="calc-mr__group__header">
+                <h2 class="title_h2">Спецтехника и коэффициенты</h2>
+                <div class="azt_tooltip">
+                    <div class="tooltip__popover">
+                        <div class="tooltip__popover__text">
+                            стоимость расчитывается по расстоянию от МКАДа (КАДа) до объекта в одну сторону
+                        </div>
+                    </div>
+                    <div class="tooltip__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_3438_3140)">
+                                <circle cx="12" cy="12" r="11" stroke="#9EA5A9" stroke-width="2"/>
+                                <path d="M9 9.27273V9C9 7.34315 10.3714 6 12.0282 6V6C13.6542 6 15 7.3181 15 8.94406V8.94406C15 9.91756 14.5188 10.8281 13.7144 11.3765L13.2018 11.7261C12.4499 12.2387 12 13.0899 12 14V14" stroke="#9EA5A9" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M12 17L12 18" stroke="#9EA5A9" stroke-width="2" stroke-linecap="round"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_3438_3140">
+                                    <rect width="24" height="24" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-mr__price-positions">
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="arenda_vyshki_18" data-price="400">
+                            <label for="arenda_vyshki_18">
+                <span class="checkbox__toggle">
+                    <span class="checkbox__toggle__marker"></span>
+                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Аренда вышки, высота 18м</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="select__wrapper select__wrapper_smena">
+                            <select class="select__smena">
+                                <option value="0.5" selected>Пол смены</option>
+                                <option value="1">1 смена</option>
+                                <option value="2">2 смены</option>
+                                <option value="3">3 смены</option>
+                                <option value="4">4 смены</option>
+                                <option value="5">5 смен</option>
+                                <option value="6">6 смен</option>
+                            </select>
+                        </div>
+
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="arenda_vyshki_22" data-price="800">
+                            <label for="arenda_vyshki_22">
+                            <span class="checkbox__toggle">
+                                <span class="checkbox__toggle__marker"></span>
+                            </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Аренда вышки, высота 22м</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="select__wrapper select__wrapper_smena">
+                            <select class="select__smena">
+                                <option value="0.5" selected>Пол смены</option>
+                                <option value="1">1 смена</option>
+                                <option value="2">2 смены</option>
+                                <option value="3">3 смены</option>
+                                <option value="4">4 смены</option>
+                                <option value="5">5 смен</option>
+                                <option value="6">6 смен</option>
+                            </select>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="arenda_vyshki_28" data-price="400">
+                            <label for="arenda_vyshki_28">
+                                <span class="checkbox__toggle">
+                                    <span class="checkbox__toggle__marker"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Аренда вышки, высота 28м</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="select__wrapper select__wrapper_smena">
+                            <select class="select__smena">
+                                <option value="1" selected>1 смена</option>
+                                <option value="2">2 смены</option>
+                                <option value="3">3 смены</option>
+                                <option value="4">4 смены</option>
+                                <option value="5">5 смен</option>
+                                <option value="6">6 смен</option>
+                            </select>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="arenda_vyshki_32" data-price="240">
+                            <label for="arenda_vyshki_32">
+                <span class="checkbox__toggle">
+                    <span class="checkbox__toggle__marker"></span>
+                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Аренда вышки, высота 32м</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="select__wrapper select__wrapper_smena">
+                            <select class="select__smena">
+                                <option value="1" selected>1 смена</option>
+                                <option value="2">2 смены</option>
+                                <option value="3">3 смены</option>
+                                <option value="4">4 смены</option>
+                                <option value="5">5 смен</option>
+                                <option value="6">6 смен</option>
+                            </select>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="kran_manipulyator" data-price="640">
+                            <label for="kran_manipulyator">
+                <span class="checkbox__toggle">
+                    <span class="checkbox__toggle__marker"></span>
+                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Кран, манипулятор</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="select__wrapper select__wrapper_smena">
+                            <select class="select__smena">
+                                <option value="1" selected>1 смена</option>
+                                <option value="2">2 смены</option>
+                                <option value="3">3 смены</option>
+                                <option value="4">4 смены</option>
+                                <option value="5">5 смен</option>
+                                <option value="6">6 смен</option>
+                            </select>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-mr__row">
+                    <div class="calc-mr__row__block_left">
+                        <div class="checkbox_big-round calc-mr__checkbox-wrapper">
+                            <input type="checkbox" id="udalenie_za_kad" data-price="640">
+                            <label for="udalenie_za_kad">
+                <span class="checkbox__toggle">
+                    <span class="checkbox__toggle__marker"></span>
+                </span>
+                            </label>
+                        </div>
+                        <span class="calc-mr__description">Удаление за КАД / МКАД</span>
+                    </div>
+                    <div class="calc-mr__row__block_right">
+                        <div class="counter__wrapper sufx_km">
+                            <button type="button" class="counter__decrement counter__btn">-</button>
+                            <input class="counter__input" type="number" value="1">
+                            <button type="button" class="counter__increment counter__btn">+</button>
+                        </div>
+                        <div class="calc-mr__price-wrapper">
+                            <span class="span-price">0</span>₽
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="calc-mr__group__footer">
+                <span class="span-price">0</span>₽
+            </div>
+        </div>
+
+        <div class="calc-mr__total">
+            <div class="calc-mr__total__sum">
+                <span>Сумма: </span>
+                <span class="green"><span id="total_sum_mr">0</span>₽</span>
+            </div>
+            <div class="calc-mr__total__btn-wrapper">
+                <button type="button" class="btn btn_green">Сохранить расчёт</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
